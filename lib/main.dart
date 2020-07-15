@@ -15,17 +15,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
-
   Map data;
   List useradatalist;
   Future getdata() async {
-    http.Response response = await http.get("https://reqres.in/api/users?page=2");
+    http.Response response = await http.get("https://bringo.biz/api/get/verified?mob=");
     data = json.decode(response.body);
     setState(() {
       useradatalist = data["data"];
     });
-
   }
 
 
@@ -39,24 +36,56 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-        appBar:AppBar(
-          title: Text("dfgfdgd"),
-          backgroundColor: Colors.amber,
-        ),
-      body: ListView.builder(itemCount:useradatalist == null?0: useradatalist.length,
-      itemBuilder: (BuildContext context,int index){
-        return Card(
-        );
-      }
-
+      appBar: AppBar(
+        title: Text("HEY"),
       ),
+      body: Padding(
+        padding: const EdgeInsets.all(10),
+        child: Container(
+          child: TextField(
+            decoration: InputDecoration(
+              hintText: "Enter your name"
+            ),
+
+          ),
+        ),
+      )
     );
+
+    ///////////////////////////////////////////////////////////////
+//    return Scaffold(
+//
+//        appBar:AppBar(
+//          title: Text("Lets do it"),
+//          backgroundColor: Colors.amber,
+//        ),
+//      body: ListView.builder(itemCount:useradatalist == null?0: useradatalist.length,
+//      itemBuilder: (BuildContext context,int index){
+//        return Card(
+//          child: Padding(
+//            padding: const EdgeInsets.all(15.0),
+//            child: Row(
+//
+//              children: <Widget>[
+//                CircleAvatar(
+//                  backgroundImage: NetworkImage(useradatalist[index]["avatar"]),
+//                ),
+//                Padding(
+//                  padding: const EdgeInsets.all(15),
+//                  child: Text(
+//                    useradatalist[index]["first_name"]+" "+useradatalist[index]["last_name"],
+//                    style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
+//                  ),
+//                ),
+//              ],
+//            ),
+//          ),
+//        );
+//      }
+//      ),
+//    );
+    //////////////////////////////////////////////////////////////////////////////////////////////////
   }
-
-
-
-
-
 //  Map data;
 //  List userData;
 //
